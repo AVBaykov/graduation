@@ -1,12 +1,15 @@
 package ru.javawebinar.graduation.model;
 
 import org.hibernate.annotations.BatchSize;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.Date;
+import java.util.EnumSet;
 import java.util.Set;
 
 @Entity
@@ -37,13 +40,27 @@ public class User extends AbstractNamedEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Vote> votes;
 
-    public User(){}
+    public User() {
+    }
 
     public User(Integer id, String name, String email, String password) {
         super(id, name);
         this.email = email;
         this.password = password;
     }
+
+    public User(Integer id, String name, String email, String password, Role role, Role... roles) {
+        this(id, name, email, password, new Date(), EnumSet.of(role, roles));
+    }
+
+    public User(Integer id, String name, String email, String password, Date registered, Collection<Role> roles) {
+        super(id, name);
+        this.email = email;
+        this.password = password;
+        this.registered = registered;
+        setRoles(roles);
+    }
+
 
     public String getEmail() {
         return email;
@@ -73,7 +90,7 @@ public class User extends AbstractNamedEntity {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
     }
 }

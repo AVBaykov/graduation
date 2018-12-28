@@ -28,7 +28,7 @@ public class Dish extends AbstractNamedEntity {
 
     public Dish(){}
 
-    protected Dish(Integer id, String name, BigDecimal price, LocalDate date) {
+    public Dish(Integer id, String name, BigDecimal price, LocalDate date) {
         super(id, name);
         this.price = price;
         this.date = date;

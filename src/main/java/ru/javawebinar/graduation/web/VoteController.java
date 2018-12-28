@@ -18,7 +18,7 @@ public class VoteController {
 
     public Vote vote(int restaurant_id) {
         VotePk votePk = new VotePk(SecurityUtil.authUserId());
-        Vote vote = new Vote(votePk);
+        Vote vote = new Vote(votePk, restaurant_id);
         vote.setRestaurant(restaurantRepository.getOne(restaurant_id));
         return voteRepository.save(vote);
     }

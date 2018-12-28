@@ -43,4 +43,12 @@ public class VotePk implements Serializable {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "VotePk{" +
+                "date=" + date +
+                ", userId=" + userId +
+                '}';
+    }
 }
