@@ -17,6 +17,8 @@
         <!-- Spring -->
         <spring.version>5.1.2.RELEASE</spring.version>
         <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
+        <!-- JSON -->
+        <jackson-json.version>2.9.7</jackson-json.version>
         <!-- Logging -->
         <logback.version>1.2.3</logback.version>
         <!-- Hibernate -->
@@ -45,6 +47,23 @@
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>2.4.0-b180830.0438</version>
+        </dependency>
+
+        <!--JSON-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate5</artifactId>
+            <version>${jackson-json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-json.version}</version>
         </dependency>
 
         <!-- Spring -->

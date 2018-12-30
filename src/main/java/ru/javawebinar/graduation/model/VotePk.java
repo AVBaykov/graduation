@@ -1,7 +1,10 @@
 package ru.javawebinar.graduation.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -11,10 +14,13 @@ public class VotePk implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Column(name = "date")
+    @NotNull
     private LocalDate date = LocalDate.now();
 
     @Column(name = "user_id")
-    private int userId;
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Integer userId;
 
     public VotePk() {
     }

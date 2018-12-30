@@ -1,5 +1,7 @@
 package ru.javawebinar.graduation.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -25,6 +27,22 @@ public class Vote {
 
     public Vote(){}
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Integer getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Integer restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
     public Vote(VotePk votePk, Integer restaurantId) {
         this.votePk = votePk;
         this.restaurantId = restaurantId;
@@ -36,6 +54,14 @@ public class Vote {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public VotePk getVotePk() {
+        return votePk;
+    }
+
+    public void setVotePk(VotePk votePk) {
+        this.votePk = votePk;
     }
 
     @Override
