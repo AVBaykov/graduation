@@ -1,15 +1,20 @@
 package ru.javawebinar.graduation;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
-import ru.javawebinar.graduation.model.Role;
-import ru.javawebinar.graduation.model.User;
-import ru.javawebinar.graduation.model.Vote;
-import ru.javawebinar.graduation.model.VotePk;
+import ru.javawebinar.graduation.model.*;
+import ru.javawebinar.graduation.repository.DishRepository;
 import ru.javawebinar.graduation.repository.RestaurantRepository;
 import ru.javawebinar.graduation.repository.UserRepository;
 import ru.javawebinar.graduation.repository.VoteRepository;
+import ru.javawebinar.graduation.service.restaurant.RestaurantServiceImpl;
+import ru.javawebinar.graduation.to.DishTo;
+import ru.javawebinar.graduation.util.DishUtil;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class SpringMain {
     public static void main(String[] args) {
@@ -22,6 +27,7 @@ public class SpringMain {
             UserRepository userRepository = (UserRepository) appCtx.getBean("userRepository");
             VoteRepository voteRepository = (VoteRepository) appCtx.getBean("voteRepository");
             RestaurantRepository restaurantRepository = appCtx.getBean(RestaurantRepository.class);
+            DishRepository dishRepository = appCtx.getBean(DishRepository.class);
 
             User user = new User(null, "User1", "user@yandex1.ru", "password", Role.ROLE_USER);
 
@@ -41,6 +47,19 @@ public class SpringMain {
             Vote updated = voteRepository.save(vote);
 
             System.out.println(updated + "обновленный");
+
+            Dish newDish = new Dish(null, "Новый Чизбургер", new BigDecimal(100.20), LocalDate.now().plusDays(1), 100002);
+            dishRepository.save(newDish);
+
+            RestaurantServiceImpl restaurantService = (RestaurantServiceImpl) appCtx.getBean("restaurantServiceImpl");
+
+            Restaurant restaurant = restaurantService.getWithMenuOfDay(100002);
+
+            restaurant.getMenu().forEach(System.out::println);
+
+            List<Restaurant> restaurantList = restaurantService.getAllWithMenuOfDay();
+
+            restaurantList.forEach(r -> System.out.println(r.getMenu().size()));
         }
     }
 }

@@ -1,11 +1,13 @@
 package ru.javawebinar.graduation.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.BatchSize;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Date;
@@ -28,6 +30,8 @@ public class User extends AbstractNamedEntity {
     private String password;
 
     @Column(name = "registered", columnDefinition = "date default now()")
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date registered = new Date();
 
     @Enumerated(EnumType.STRING)

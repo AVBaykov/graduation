@@ -21,6 +21,8 @@
 
     <jpa:repositories base-package="ru.javawebinar.graduation.repository"/>
 
+    <context:component-scan base-package="ru.javawebinar.**.service"/>
+
     <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
 
     <tx:annotation-driven/>

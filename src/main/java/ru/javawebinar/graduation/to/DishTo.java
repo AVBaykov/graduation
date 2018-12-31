@@ -1,36 +1,44 @@
-package ru.javawebinar.graduation.model;
+package ru.javawebinar.graduation.to;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "dishes")
-public class Dish extends AbstractNamedEntity {
+public class DishTo extends BaseTo implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @Column(name = "price")
+    @NotNull
+    @Size(min = 2, max = 100)
+    private String name;
+
     @NotNull
     private BigDecimal price;
 
-    @Column(name = "date")
     @NotNull
     private LocalDate date = LocalDate.now();
 
-    @Column(name = "restaurant_id")
     @NotNull
     private Integer restaurantId;
 
-    public Dish(){}
+    public DishTo() {
+    }
 
-    public Dish(Integer id, String name, BigDecimal price, LocalDate date, Integer restaurantId) {
-        super(id, name);
+    public DishTo(Integer id, String name, BigDecimal price, LocalDate date, Integer restaurantId) {
+        super(id);
+        this.name = name;
         this.price = price;
         this.date = date;
         this.restaurantId = restaurantId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getPrice() {
@@ -59,11 +67,11 @@ public class Dish extends AbstractNamedEntity {
 
     @Override
     public String toString() {
-        return "Dish{" +
-                "price=" + price +
+        return "DishTo{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
                 ", date=" + date +
                 ", restaurantId=" + restaurantId +
-                ", name='" + name + '\'' +
                 ", id=" + id +
                 '}';
     }
