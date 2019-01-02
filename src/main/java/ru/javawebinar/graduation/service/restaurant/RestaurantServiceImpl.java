@@ -41,7 +41,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public Restaurant getWithMenuOfDay(int id) throws NotFoundException {
         LocalDate today = LocalDate.now();
-        return restaurantRepository.getWithMenuOfDay(id, today);
+        return checkNotFoundWithId(restaurantRepository.getWithMenuOfDay(id, today), id);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public List<Restaurant> getAll() {
-        return null;
+        return restaurantRepository.findAll();
     }
 
     @Override

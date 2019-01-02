@@ -14,13 +14,9 @@ public class Restaurant extends AbstractNamedEntity {
     private String address;
 
 
-    @Column(name = "phone")
-    @NotNull
-    private String phone;
-
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id", referencedColumnName = "Id")
-    private List<Dish> menu;
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "Id", insertable = false, updatable = false)
+    protected List<Dish> menu;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     private Set<Vote> votes;
@@ -29,10 +25,13 @@ public class Restaurant extends AbstractNamedEntity {
 
     }
 
-    public Restaurant(Integer id, String name, String address, String phone) {
+    public Restaurant(Restaurant restaurant) {
+        this(restaurant.getId(), restaurant.getName(), restaurant.getAddress());
+    }
+
+    public Restaurant(Integer id, String name, String address) {
         super(id, name);
         this.address = address;
-        this.phone = phone;
     }
 
     public List<Dish> getMenu() {
@@ -41,5 +40,21 @@ public class Restaurant extends AbstractNamedEntity {
 
     public void setMenu(List<Dish> menu) {
         this.menu = menu;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Set<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Set<Vote> votes) {
+        this.votes = votes;
     }
 }

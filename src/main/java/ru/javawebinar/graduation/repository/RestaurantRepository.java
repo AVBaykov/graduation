@@ -10,6 +10,7 @@ import ru.javawebinar.graduation.model.Restaurant;
 import java.time.LocalDate;
 import java.util.List;
 
+@Transactional(readOnly = true)
 public interface RestaurantRepository extends JpaRepository<Restaurant, Integer> {
     @Transactional
     @Modifying

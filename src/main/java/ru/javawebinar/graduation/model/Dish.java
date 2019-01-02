@@ -1,9 +1,10 @@
 package ru.javawebinar.graduation.model;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 public class Dish extends AbstractNamedEntity {
 
     @Column(name = "price")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @NotNull
     private BigDecimal price;
 
@@ -25,6 +27,16 @@ public class Dish extends AbstractNamedEntity {
     private Integer restaurantId;
 
     public Dish(){}
+
+    public Dish(Dish dish) {
+        this(dish.getId(), dish.getName(), dish.getPrice(), dish.getRestaurantId());
+    }
+
+    public Dish(Integer id, String name, BigDecimal price, Integer restaurantId) {
+        super(id, name);
+        this.price = price;
+        this.restaurantId = restaurantId;
+    }
 
     public Dish(Integer id, String name, BigDecimal price, LocalDate date, Integer restaurantId) {
         super(id, name);

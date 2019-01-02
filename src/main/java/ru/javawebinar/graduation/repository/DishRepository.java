@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.graduation.model.Dish;
 
+import java.util.List;
+
 @Transactional(readOnly = true)
 public interface DishRepository extends JpaRepository<Dish, Integer> {
 
@@ -14,4 +16,7 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
     @Modifying
     @Query("DELETE FROM Dish d WHERE d.id=:id")
     int delete(@Param("id") int id);
+
+    @Query("SELECT d FROM Dish d WHERE d.restaurantId=:restaurantId ORDER BY d.date DESC")
+    List<Dish> getAll(@Param("restaurantId") int restaurantId);
 }

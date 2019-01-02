@@ -30,16 +30,16 @@ public class VoteController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/{restaurant_id}")
-    public ResponseEntity<Vote> vote(@PathVariable("restaurant_id") int restaurant_id) {
+    @PostMapping("/{restaurantId}")
+    public ResponseEntity<Vote> vote(@PathVariable("restaurantId") int restaurantId) {
         VotePk votePk = new VotePk(SecurityUtil.authUserId());
-        Vote vote = new Vote(votePk, restaurant_id);
-        vote.setRestaurant(restaurantRepository.getOne(restaurant_id));
+        Vote vote = new Vote(votePk, restaurantId);
+        vote.setRestaurant(restaurantRepository.getOne(restaurantId));
         vote.setUser(userRepository.getOne(SecurityUtil.authUserId()));
         Vote saved = voteRepository.save(vote);
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path(REST_URL + "/{restaurant_id}")
+                .path(REST_URL + "/{restaurantId}")
                 .buildAndExpand(saved.getRestaurantId()).toUri();
 
         return ResponseEntity.created(uriOfNewResource).body(saved);

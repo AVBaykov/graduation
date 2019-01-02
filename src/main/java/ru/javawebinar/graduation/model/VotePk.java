@@ -7,6 +7,7 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Embeddable
 public class VotePk implements Serializable {
@@ -48,6 +49,20 @@ public class VotePk implements Serializable {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VotePk votePk = (VotePk) o;
+        return date.equals(votePk.date) &&
+                userId.equals(votePk.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, userId);
     }
 
     @Override

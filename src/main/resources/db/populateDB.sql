@@ -15,10 +15,10 @@ INSERT INTO user_roles (role, user_id) VALUES
   ('ROLE_ADMIN', 100001),
   ('ROLE_USER', 100001);
 
-INSERT INTO restaurants (NAME, ADDRESS, PHONE) VALUES
-  ('McDonalds', 'Город Н, Центральная площадь 30', '555-55-55'),
-  ('Теремок', 'Город Н, Кутувоская улица, 35', '222-22-22'),
-  ('Гуси', 'Город Н, Колочевская улица, 5', '111-11-11');
+INSERT INTO restaurants (NAME, ADDRESS) VALUES
+  ('McDonalds', 'Город Н, Центральная площадь 30'),
+  ('Теремок', 'Город Н, Кутувоская улица, 35'),
+  ('Гуси', 'Город Н, Колочевская улица, 5');
 
 INSERT INTO dishes (NAME, PRICE, RESTAURANT_ID) VALUES
   ('Гамбургер', 60.00, 100002),
