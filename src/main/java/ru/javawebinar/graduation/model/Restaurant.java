@@ -1,7 +1,7 @@
 package ru.javawebinar.graduation.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import java.util.Set;
 public class Restaurant extends AbstractNamedEntity {
 
     @Column(name = "address")
-    @NotNull
+    @NotBlank
     private String address;
 
 

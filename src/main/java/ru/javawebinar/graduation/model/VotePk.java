@@ -14,11 +14,11 @@ public class VotePk implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     @NotNull
     private LocalDate date = LocalDate.now();
 
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = false)
     @NotNull
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer userId;

@@ -15,5 +15,5 @@ public interface DishService {
 
     void update(Dish dish);
 
-    List<Dish> getAll(int restaurantId);
+    List<Dish> getAllByRestaurantId(int restaurantId);
 }

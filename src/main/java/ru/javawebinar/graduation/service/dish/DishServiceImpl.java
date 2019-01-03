@@ -43,7 +43,7 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<Dish> getAll(int restaurantId) {
+    public List<Dish> getAllByRestaurantId(int restaurantId) {
         return dishRepository.getAll(restaurantId);
     }
 }

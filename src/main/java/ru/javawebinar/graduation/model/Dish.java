@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,16 +14,17 @@ import java.time.LocalDate;
 @Table(name = "dishes")
 public class Dish extends AbstractNamedEntity {
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @Digits(integer = 6, fraction = 2, message = "price must be not exceed 6 digits to and 2 digits after point")
     @NotNull
     private BigDecimal price;
 
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     @NotNull
     private LocalDate date = LocalDate.now();
 
-    @Column(name = "restaurant_id")
+    @Column(name = "restaurant_id", nullable = false)
     @NotNull
     private Integer restaurantId;
 

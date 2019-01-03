@@ -20,7 +20,7 @@ public class Vote {
     @NotNull
     private Restaurant restaurant;
 
-    @Column(name = "restaurant_id", insertable = false, updatable = false)
+    @Column(name = "restaurant_id", insertable = false, updatable = false, nullable = false)
     private Integer restaurantId;
 
     public Vote(){}
