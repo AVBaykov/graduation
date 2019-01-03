@@ -16,6 +16,7 @@
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <!-- Spring -->
         <spring.version>5.1.2.RELEASE</spring.version>
+        <spring.security.version>5.1.1.RELEASE</spring.security.version>
         <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
         <!-- JSON -->
         <jackson-json.version>2.9.7</jackson-json.version>
@@ -109,6 +110,17 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
         </dependency>
 
         <!-- Logging with SLF4J & LogBack -->

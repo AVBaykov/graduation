@@ -14,6 +14,7 @@ import ru.javawebinar.graduation.model.VotePk;
 import ru.javawebinar.graduation.repository.RestaurantRepository;
 import ru.javawebinar.graduation.repository.UserRepository;
 import ru.javawebinar.graduation.repository.VoteRepository;
+import ru.javawebinar.graduation.util.exception.VoteTimesUpException;
 
 import java.net.URI;
 import java.time.LocalTime;
@@ -36,7 +37,7 @@ public class VoteController {
     @PostMapping("/{restaurantId}")
     public ResponseEntity<Vote> vote(@PathVariable("restaurantId") int restaurantId) {
         if (LocalTime.now().isAfter(VOTE_END_TIME)) {
-            return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).body(null);
+            throw new VoteTimesUpException("Vote time was up at 11:00");
         }
         VotePk votePk = new VotePk(SecurityUtil.authUserId());
         Vote vote = new Vote(votePk, restaurantId);
