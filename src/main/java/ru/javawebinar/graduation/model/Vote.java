@@ -23,7 +23,8 @@ public class Vote {
     @Column(name = "restaurant_id", insertable = false, updatable = false, nullable = false)
     private Integer restaurantId;
 
-    public Vote(){}
+    public Vote() {
+    }
 
     public User getUser() {
         return user;

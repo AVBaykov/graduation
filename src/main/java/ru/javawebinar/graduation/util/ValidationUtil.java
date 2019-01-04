@@ -1,6 +1,10 @@
 package ru.javawebinar.graduation.util;
 
+import org.slf4j.Logger;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.context.request.WebRequest;
 import ru.javawebinar.graduation.HasId;
+import ru.javawebinar.graduation.util.exception.ErrorType;
 import ru.javawebinar.graduation.util.exception.IllegalRequestDataException;
 import ru.javawebinar.graduation.util.exception.NotFoundException;
 
@@ -54,7 +58,26 @@ public class ValidationUtil {
         return result;
     }
 
+    public static String[] getBindErrorDetails(BindingResult result) {
+        return result.getFieldErrors().stream().map(
+                fe -> {
+                    String msg = fe.getDefaultMessage();
+                    if (msg != null) {
+                        if (!msg.startsWith(fe.getField())) {
+                            msg = fe.getField() + ' ' + msg;
+                        }
+                    }
+                    return msg;
+                }).toArray(String[]::new);
+    }
+
     public static String getMessage(Throwable e) {
         return e.getLocalizedMessage() != null ? e.getLocalizedMessage() : e.getClass().getName();
+    }
+
+    public static Throwable logAndGetRootCause(Logger log, WebRequest request, Exception e, ErrorType errorType) {
+        Throwable rootCause = getRootCause(e);
+        log.warn("{} at request  {}: {}", errorType, request.getDescription(false), rootCause.toString());
+        return rootCause;
     }
 }

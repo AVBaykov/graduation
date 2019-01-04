@@ -13,7 +13,6 @@ import ru.javawebinar.graduation.model.Restaurant;
 import ru.javawebinar.graduation.service.restaurant.RestaurantService;
 
 import javax.validation.Valid;
-
 import java.net.URI;
 import java.util.List;
 
@@ -61,6 +60,12 @@ public class RestaurantController {
     public void delete(@PathVariable("id") int id) {
         log.info("delete {}", id);
         service.delete(id);
+    }
+
+    @GetMapping
+    public List<Restaurant> getAll() {
+        log.info("getAll");
+        return service.getAll();
     }
 
     @GetMapping(value = "/{id}/dishes")

@@ -7,13 +7,10 @@ import ru.javawebinar.graduation.repository.RestaurantRepository;
 import ru.javawebinar.graduation.repository.UserRepository;
 import ru.javawebinar.graduation.repository.VoteRepository;
 import ru.javawebinar.graduation.service.restaurant.RestaurantServiceImpl;
-import ru.javawebinar.graduation.to.DishTo;
-import ru.javawebinar.graduation.util.DishUtil;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 public class SpringMain {
