@@ -19,7 +19,7 @@
         <spring.security.version>5.1.1.RELEASE</spring.security.version>
         <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
         <!-- JSON -->
-        <jackson-json.version>2.9.7</jackson-json.version>
+        <jackson-json.version>2.9.8</jackson-json.version>
         <!-- Logging -->
         <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.25</slf4j.version>
