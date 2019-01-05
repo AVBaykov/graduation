@@ -86,7 +86,7 @@ class DishControllerTest extends AbstractControllerTest {
 
     @Test
     void testUpdate() throws Exception {
-        Dish updated = DishTestData.getUpdated();
+        Dish updated = getUpdated();
 
         mockMvc.perform(put(REST_URL + DISH_REST1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -99,7 +99,7 @@ class DishControllerTest extends AbstractControllerTest {
 
     @Test
     void testCreate() throws Exception {
-        Dish created = DishTestData.getCreated();
+        Dish created = getCreated();
 
         ResultActions action = mockMvc.perform(post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)

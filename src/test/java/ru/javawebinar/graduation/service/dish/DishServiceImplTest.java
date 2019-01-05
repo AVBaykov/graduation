@@ -1,6 +1,5 @@
 package ru.javawebinar.graduation.service.dish;
 
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.javawebinar.graduation.DishTestData;
@@ -13,9 +12,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static ru.javawebinar.graduation.DishTestData.assertMatch;
 import static ru.javawebinar.graduation.DishTestData.*;
-import static ru.javawebinar.graduation.RestaurantTestData.*;
+import static ru.javawebinar.graduation.RestaurantTestData.REST1_ID;
 
 class DishServiceImplTest extends AbstractServiceTest {
 
@@ -25,7 +23,7 @@ class DishServiceImplTest extends AbstractServiceTest {
 
     @Test
     void create() throws Exception {
-        Dish newDish = DishTestData.getCreated();
+        Dish newDish = getCreated();
         Dish created = service.create(newDish);
         newDish.setId(created.getId());
         assertMatch(service.getAllByRestaurantId(REST1_ID), DISH1, DISH2, DISH3, DISH4, DISH5, newDish);
@@ -57,7 +55,7 @@ class DishServiceImplTest extends AbstractServiceTest {
 
     @Test
     void update() throws Exception {
-        Dish updated = DishTestData.getUpdated();
+        Dish updated = getUpdated();
         service.update(new Dish(updated));
         assertMatch(service.get(DISH_REST1_ID), updated);
     }
@@ -71,10 +69,10 @@ class DishServiceImplTest extends AbstractServiceTest {
 
     @Test
     void testValidation() throws Exception {
-        validateRootCause(() -> service.create(new Dish(null," ", new BigDecimal("50.00"), REST1_ID)), ConstraintViolationException.class);
-        validateRootCause(() -> service.create(new Dish(null,"Суши", new BigDecimal("50.124495"), REST1_ID)), ConstraintViolationException.class);
-        validateRootCause(() -> service.create(new Dish(null," ", null, REST1_ID)), ConstraintViolationException.class);
-        validateRootCause(() -> service.create(new Dish(null,"Крабы", new BigDecimal("50.00"), null)), ConstraintViolationException.class);
+        validateRootCause(() -> service.create(new Dish(null, " ", new BigDecimal("50.00"), REST1_ID)), ConstraintViolationException.class);
+        validateRootCause(() -> service.create(new Dish(null, "Суши", new BigDecimal("50.124495"), REST1_ID)), ConstraintViolationException.class);
+        validateRootCause(() -> service.create(new Dish(null, " ", null, REST1_ID)), ConstraintViolationException.class);
+        validateRootCause(() -> service.create(new Dish(null, "Крабы", new BigDecimal("50.00"), null)), ConstraintViolationException.class);
     }
 
 }

@@ -85,7 +85,7 @@ class RestaurantControllerTest extends AbstractControllerTest {
 
     @Test
     void testUpdate() throws Exception {
-        Restaurant updated = RestaurantTestData.getUpdated();
+        Restaurant updated = getUpdated();
 
         mockMvc.perform(put(REST_URL + REST1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -98,7 +98,7 @@ class RestaurantControllerTest extends AbstractControllerTest {
 
     @Test
     void testCreate() throws Exception {
-        Restaurant created = RestaurantTestData.getCreated();
+        Restaurant created = getCreated();
 
         ResultActions action = mockMvc.perform(post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)

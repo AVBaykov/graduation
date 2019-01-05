@@ -57,7 +57,7 @@ public class ExceptionInfoHandler {
     @ResponseStatus(value = HttpStatus.CONFLICT)
     @ExceptionHandler(VoteTimesUpException.class)
     public ErrorInfo voteTimesUp(WebRequest request, VoteTimesUpException e) {
-        return logAndGetErrorInfo(request, e, ErrorType.VOTE_TIMES_UP);
+        return logAndGetErrorInfo(request, e, VOTE_TIMES_UP);
     }
 
     private ErrorInfo logAndGetErrorInfo(WebRequest request, Exception e, ErrorType errorType, String... details) {
