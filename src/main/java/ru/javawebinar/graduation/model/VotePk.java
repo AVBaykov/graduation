@@ -64,12 +64,4 @@ public class VotePk implements Serializable {
     public int hashCode() {
         return Objects.hash(date, userId);
     }
-
-    @Override
-    public String toString() {
-        return "VotePk{" +
-                "date=" + date +
-                ", userId=" + userId +
-                '}';
-    }
 }

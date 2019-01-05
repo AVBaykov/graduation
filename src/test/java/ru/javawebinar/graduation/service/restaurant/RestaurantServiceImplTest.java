@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import ru.javawebinar.graduation.DishTestData;
+import ru.javawebinar.graduation.RestaurantTestData;
 import ru.javawebinar.graduation.model.Restaurant;
 import ru.javawebinar.graduation.service.AbstractServiceTest;
 import ru.javawebinar.graduation.util.exception.NotFoundException;
@@ -20,7 +21,7 @@ class RestaurantServiceImplTest extends AbstractServiceTest {
 
     @Test
     void create() throws Exception {
-        Restaurant newRestaurant = new Restaurant(null, "Шаурма", "Москва Лубянка 33");
+        Restaurant newRestaurant = RestaurantTestData.getCreated();
         Restaurant created = service.create(newRestaurant);
         newRestaurant.setId(created.getId());
         assertMatch(service.getAll(), REST1, REST2, REST3, newRestaurant);
@@ -58,10 +59,8 @@ class RestaurantServiceImplTest extends AbstractServiceTest {
 
     @Test
     void update() throws Exception {
-        Restaurant updated = new Restaurant(REST1);
-        updated.setName("Updated");
-        updated.setAddress("New address");
-        service.update(new Restaurant(updated));
+        Restaurant updated = RestaurantTestData.getUpdated();
+        service.update(updated);
         assertMatch(service.get(REST1_ID), updated);
     }
 

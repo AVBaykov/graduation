@@ -1,5 +1,6 @@
 package ru.javawebinar.graduation;
 
+import org.springframework.test.web.servlet.ResultMatcher;
 import ru.javawebinar.graduation.model.Dish;
 
 import java.math.BigDecimal;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static ru.javawebinar.graduation.RestaurantTestData.*;
+import static ru.javawebinar.graduation.TestUtil.readFromJsonMvcResult;
 import static ru.javawebinar.graduation.model.AbstractBaseEntity.START_SEQ;
 
 
@@ -36,6 +38,14 @@ public class DishTestData {
     public static final List<Dish> MENU2 = List.of(DISH6, DISH7, DISH8, DISH9, DISH10);
     public static final List<Dish> MENU3 = List.of(DISH11, DISH12, DISH13, DISH14, DISH15);
 
+    public static Dish getCreated() {
+        return new Dish(null, "Шаурма", new BigDecimal("100.00"), REST1_ID);
+    }
+
+    public static Dish getUpdated() {
+        return new Dish(DISH_REST1_ID, "Обновленное блюдо", new BigDecimal("200.00"), REST1_ID);
+    }
+
 
     public static void assertMatch(Dish actual, Dish expected) {
         assertThat(actual).isEqualToComparingFieldByField(expected);
@@ -47,6 +57,10 @@ public class DishTestData {
 
     public static void assertMatch(Iterable<Dish> actual, Iterable<Dish> expected) {
         assertThat(actual).usingFieldByFieldElementComparator().isEqualTo(expected);
+    }
+
+    public static ResultMatcher getDishMatcher(Dish expected) {
+        return result -> assertMatch(readFromJsonMvcResult(result, Dish.class), expected);
     }
 
 }

@@ -1,4 +1,4 @@
-package ru.javawebinar.graduation.web;
+package ru.javawebinar.graduation.web.user;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

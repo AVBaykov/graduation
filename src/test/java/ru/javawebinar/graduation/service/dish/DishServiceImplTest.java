@@ -3,6 +3,7 @@ package ru.javawebinar.graduation.service.dish;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.javawebinar.graduation.DishTestData;
 import ru.javawebinar.graduation.model.Dish;
 import ru.javawebinar.graduation.service.AbstractServiceTest;
 import ru.javawebinar.graduation.util.exception.NotFoundException;
@@ -24,7 +25,7 @@ class DishServiceImplTest extends AbstractServiceTest {
 
     @Test
     void create() throws Exception {
-        Dish newDish = new Dish(null, "Шаурма", new BigDecimal("100.00"), REST1_ID);
+        Dish newDish = DishTestData.getCreated();
         Dish created = service.create(newDish);
         newDish.setId(created.getId());
         assertMatch(service.getAllByRestaurantId(REST1_ID), DISH1, DISH2, DISH3, DISH4, DISH5, newDish);
@@ -56,9 +57,7 @@ class DishServiceImplTest extends AbstractServiceTest {
 
     @Test
     void update() throws Exception {
-        Dish updated = new Dish(DISH1);
-        updated.setName("Updated");
-        updated.setPrice(new BigDecimal("65.00"));
+        Dish updated = DishTestData.getUpdated();
         service.update(new Dish(updated));
         assertMatch(service.get(DISH_REST1_ID), updated);
     }

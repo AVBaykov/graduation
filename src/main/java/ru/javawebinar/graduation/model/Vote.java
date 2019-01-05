@@ -62,12 +62,4 @@ public class Vote {
     public void setVotePk(VotePk votePk) {
         this.votePk = votePk;
     }
-
-    @Override
-    public String toString() {
-        return "Vote{" +
-                "votePk=" + votePk +
-                ", restaurantId=" + restaurantId +
-                '}';
-    }
 }
