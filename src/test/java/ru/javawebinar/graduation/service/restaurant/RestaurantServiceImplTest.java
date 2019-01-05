@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import ru.javawebinar.graduation.DishTestData;
-import ru.javawebinar.graduation.RestaurantTestData;
 import ru.javawebinar.graduation.model.Restaurant;
 import ru.javawebinar.graduation.service.AbstractServiceTest;
 import ru.javawebinar.graduation.util.exception.NotFoundException;

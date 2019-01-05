@@ -6,7 +6,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.javawebinar.graduation.RestaurantTestData;
 import ru.javawebinar.graduation.model.Restaurant;
 import ru.javawebinar.graduation.service.restaurant.RestaurantService;
 import ru.javawebinar.graduation.web.AbstractControllerTest;

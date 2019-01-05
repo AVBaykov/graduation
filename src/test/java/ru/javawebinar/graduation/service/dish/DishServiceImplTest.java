@@ -2,7 +2,6 @@ package ru.javawebinar.graduation.service.dish;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.javawebinar.graduation.DishTestData;
 import ru.javawebinar.graduation.model.Dish;
 import ru.javawebinar.graduation.service.AbstractServiceTest;
 import ru.javawebinar.graduation.util.exception.NotFoundException;
