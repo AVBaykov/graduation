@@ -41,3 +41,24 @@ P.P.P.S.: Asume that your API will used by a frontend developer to build fronten
 - Spring Security Test / JUnit 5
 - SLF4J & Logback
 - Tomcat
+
+#### Credentials
+
+User:
+ * login: user@yandex.ru
+ * password: password
+Admin:
+ * login: admin@gmail.com
+ * password: admin
+
+P.S. all unauthorized access prohibited. Users have not access to admin commands
+
+# CURL Commands
+
+---
+## User:
+
+- #### Get all restaurant's with today's menu's
+  `curl -X GET http://localhost:8080/graduation/restaurants/dishes -H 'Authorization: Basic dXNlckB5YW5kZXgucnU6cGFzc3dvcmQ='`
+- #### Vote as user for restaurant with id 100003. After 11:00 you cannot vote
+  `curl -X POST http://localhost:8080/graduation/votes/100003 -H 'Authorization: Basic dXNlckB5YW5kZXgucnU6cGFzc3dvcmQ='`
