@@ -27,3 +27,17 @@ P.S.: you can use a project seed you find where all technologies are already pre
 P.P.S.: Make sure everything works with latest version that is on github :)
 
 P.P.P.S.: Asume that your API will used by a frontend developer to build frontend on top of that.
+
+#### Used technologies
+- Java 11
+- Maven
+- Spring Security
+- Spring 5
+  * Spring Core (Beans, Context)
+  * Spring Data JPA
+  * Spring MVC
+- Hibernate
+- DBs: HSQLDB
+- Spring Security Test / JUnit 5
+- SLF4J & Logback
+- Tomcat
