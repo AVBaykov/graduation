@@ -53,9 +53,7 @@ Admin:
 
 P.S. all unauthorized access prohibited. Users have not access to admin commands
 
-# Documentation
-
-## <a href="https://documenter.getpostman.com/view/6266767/RznEJdFX"> Postman documantation</a>
+# <a href="https://documenter.getpostman.com/view/6266767/RznEJdFX">Documentation</a>
 
 # CURL Commands
 
