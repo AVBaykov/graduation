@@ -66,3 +66,12 @@ P.S. all unauthorized access prohibited. Users have not access to admin commands
 ## Admin:
 
 ### dishes:
+`curl -X POST http://localhost:8080/graduation/dishes/ -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu' -H 'Content-Type: application/json' -d '{"name":"Double Hamburger","price":"105.00","restaurantId":100002}'
+
+curl -X GET http://localhost:8080/graduation/dishes/100005 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
+
+curl -X PUT http://localhost:8080/graduation/dishes/100005 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu' -H 'Content-Type: application/json' -d '{"name":"Updated Humburger","price":"120.12","restaurantId":100002}'
+
+curl -X DELETE http://localhost:8080/graduation/dishes/100005 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
+
+curl -X GET http://localhost:8080/graduation/dishes/restaurants/100002 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'`
