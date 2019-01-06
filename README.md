@@ -72,3 +72,17 @@ P.S. all unauthorized access prohibited. Users have not access to admin commands
      curl -X POST http://localhost:8080/graduation/dishes/ -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu' -H 'Content-Type: application/json' -d '{"name":"Double Hamburger","price":"105.00","restaurantId":100002}''
      curl -X DELETE http://localhost:8080/graduation/dishes/100005 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
      curl -X GET http://localhost:8080/graduation/dishes/restaurants/100002 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
+     
+### restaurants:
+      curl -X GET http://localhost:8080/graduation/restaurants/100003 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
+      curl -X POST http://localhost:8080/graduation/restaurants -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu' -H 'Content-Type: application/json' -d '{"name":"Fridays","address":"Moscow, sha la la la street"}'
+      curl -X GET http://localhost:8080/graduation/restaurants -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu' -H 'Postman-Token: 8ac37ed2-2a10-49d8-9889-f721c380232c' -H 'cache-control: no-cache'
+      curl -X GET http://localhost:8080/graduation/restaurants/100002/dishes -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
+      curl -X GET http://localhost:8080/graduation/restaurants/dishes -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
+      curl -X PUT http://localhost:8080/graduation/restaurants/100002 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu' -H 'Content-Type: application/json' -d '{"id":100002,"name":"McDonalds New","address":"New Address"}'
+      curl -X DELETE http://localhost:8080/graduation/restaurants/100002 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'
+      
+### votes:
+ 
+- #### Vote as admin for restaurant with id 100003. After 11:00 you cannot vote
+  `curl -X POST http://localhost:8080/graduation/votes/100003 -H 'Authorization: Basic YWRtaW5AZ21haWwuY29tOmFkbWlu'`
