@@ -62,3 +62,7 @@ P.S. all unauthorized access prohibited. Users have not access to admin commands
   `curl -X GET http://localhost:8080/graduation/restaurants/dishes -H 'Authorization: Basic dXNlckB5YW5kZXgucnU6cGFzc3dvcmQ='`
 - #### Vote as user for restaurant with id 100003. After 11:00 you cannot vote
   `curl -X POST http://localhost:8080/graduation/votes/100003 -H 'Authorization: Basic dXNlckB5YW5kZXgucnU6cGFzc3dvcmQ='`
+
+## Admin:
+
+### dishes:
